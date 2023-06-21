@@ -69,7 +69,7 @@
 /*Front of the card*/
 .flip-card-front{
     /*Appearance*/
-    background-image: url("https://placehold.co/250x250/orange/blue");
+    background-image: url("../images/ui/CtrlPlay.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -86,4 +86,6 @@
     width: 100%;
     height: 100%;
 }
-
+.flip-card-inner.matched .flip-card-back>img{
+    opacity: .2;
+}

@@ -1,7 +1,14 @@
 // Variables
 
 //Factory
-function urlBuilder(){}
+function urlBuilder(number){
+    //Turning the number into a string
+    number+="";
+    //Adding 0 to the left of small numbers
+    number = number.padStart(2,'0');
+
+    return `images/heros/card${number}.jpeg`;
+}
 
 // Object instances
 let card = new CardManager(urlBuilder);
@@ -33,5 +40,11 @@ start.addEventListener('click', ()=>{
     board.fill(select.value);
 });
 
-// Development code
-start.click();
+board.node.addEventListener('click',()=>{
+   if(board.check()){
+    setTimeout(() => {
+        menu.classList.remove('hidden');
+        board.node.classList.add('hidden');
+    }, 2000);
+   } 
+})

@@ -36,15 +36,54 @@ class BoardManager{
             // Adjust the numer of cards and continue the game
             numberCards = 2*this.numImgs;
         }
-
+        // numberCards should be an int
+        numberCards=parseInt(numberCards);
+        // Setting curNumCards
+        this.curNumCards = numberCards;
+        
         this.clear(); // Reset the board
-        this.addCard(this.cardManager.gen(1)); // Place one card in the board
+        this.genRamdonList(numberCards).forEach((number)=>{
+             // Place one card in the board based in the card number
+            this.addCard(this.cardManager.gen(number));
+        })
 
+        this.adjustCss();
     }
+
+    // Adjust the css to fit all cards in the board
+    adjustCss(){
+        // Calculating the number of columns
+        let cols = Math.sqrt(this.curNumCards);
+        // Calculating the card size
+        let size = (100/cols - 1);
+        // Turnning the size into css a string
+        size+='vmin';
+
+        //Setting the css properties
+        document.documentElement.style.setProperty("--numCols", cols);
+        document.documentElement.style.setProperty("--size", size); 
+    }
+
 
     //Add one card to the board
     addCard(card){
         this.node.appendChild(card); // Append card to the board
     }
 
+    // Generate random list
+    genRamdonList(size){
+        // Create a list with the numbers 1 to size
+        let list = Array(size/2).fill().map((_,i)=>i+1);
+        // Double that list and shuffle it
+        list = [...list,...list].sort(()=>Math.random()-0.5);
+        return list;
+    }
+
+    // Check if all cards are found
+    check(){
+        // Get all found cards
+        let flipped = document.getElementsByClassName('matched');
+        // Return if it is equal the expected number of cards
+        return flipped.length >= this.curNumCards;
+    }
 }
