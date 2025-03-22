@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+   
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory game</title>
+    <title>jogo da memoria</title>
     <!-- Styles -->
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/main.css">
@@ -15,6 +17,7 @@
     <script src="scripts/main.js" defer></script>
 </head>
 <body>
+   
     <!-- Templates -->
     <template id="cardTemplate">
         <div class="flip-card">
@@ -31,7 +34,10 @@
         <h1>Memória do herói</h1>
         <div class="container">
             <select name="numCards" id="numCards"></select>
-            <button id="start">start</button>
+            <a  id="start" class="btn-slice" href="#">
+                <div class="top"><span>iniciar</span></div>
+                <div class="bottom"><span>iniciar</span></div>
+            </a>
         </div>
     </div>
 </body>
